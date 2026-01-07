@@ -49,6 +49,7 @@ post_install do |installer|
       # 掃除（Strip）を完全に禁止する（Swiftの掃除も禁止！）
       config.build_settings['STRIP_INSTALLED_PRODUCT'] = 'NO'
       config.build_settings['STRIP_SWIFT_SYMBOLS'] = 'NO'
+      config.build_settings['STRIP_STYLE'] = 'debugging'
     end
   end
 end
