@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "465677124076",
+    "project_id": "slowgardengift",
+    "storage_bucket": "slowgardengift.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:465677124076:android:a26bf61b81c07dc43b80c9",
+        "android_client_info": {
+          "package_name": "com.juliakoyano.poikatsu.flutter_application_1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnKQ4ODwK_FnxB_F0ZQxeVFbwvUfwQS70"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
