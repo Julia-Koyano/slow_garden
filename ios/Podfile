@@ -1,4 +1,4 @@
-# 1. ここでiOSバージョンを13.0に指定（#は付けない）
+# 1. ここでiOSバージョンを13.0に指定
 platform :ios, '13.0'
 
 source 'https://github.com/CocoaPods/Specs.git'
@@ -28,7 +28,6 @@ target 'Runner' do
   use_frameworks!
   use_modular_headers!
 
-  # ↓ 手動指定は削除し、Flutterにお任せします
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
 end
 
@@ -42,11 +41,15 @@ post_install do |installer|
       # 2. Intel Mac対策
       config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'arm64'
 
-      # 3. 【今回追加】「"」と「<」の書き方の違いエラーを無視する
+      # 3. 「"」と「<」の書き方の違いエラーを無視する
       config.build_settings['CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER'] = 'NO'
       
-      # 4. 【今回追加】モジュールの厳密なチェックを緩める
+      # 4. モジュールの厳密なチェックを緩める
       config.build_settings['CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES'] = 'YES'
+
+      # ★★★ 5. 【ここが重要】Xcode 16の掃除エラー(-G)を回避する設定 ★★★
+      config.build_settings['STRIP_INSTALLED_PRODUCT'] = 'NO'
+      config.build_settings['STRIP_STYLE'] = 'non-global'
     end
   end
 end
