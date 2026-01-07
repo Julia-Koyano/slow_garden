@@ -41,15 +41,14 @@ post_install do |installer|
       # 2. Intel Mac対策
       config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'arm64'
 
-      # 3. 「"」と「<」の書き方の違いエラーを無視する
+      # 3. エラー無視設定
       config.build_settings['CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER'] = 'NO'
-      
-      # 4. モジュールの厳密なチェックを緩める
       config.build_settings['CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES'] = 'YES'
 
-      # ★★★ 5. 【ここが重要】Xcode 16の掃除エラー(-G)を回避する設定 ★★★
+      # ★★★ 4. ここが修正ポイント！ ★★★
+      # 掃除（Strip）を完全に禁止する（Swiftの掃除も禁止！）
       config.build_settings['STRIP_INSTALLED_PRODUCT'] = 'NO'
-      config.build_settings['STRIP_STYLE'] = 'non-global'
+      config.build_settings['STRIP_SWIFT_SYMBOLS'] = 'NO'
     end
   end
 end
